@@ -16,12 +16,69 @@
   <!-- Custom styles for this template -->
   <link href="css/modern-business.css" rel="stylesheet">
 
+  <link rel="stylesheet" media="screen" href="css/style.css" />
+
+  <script type="text/javascript" src="plugins/jquery.js"></script>
+<script type="text/javascript" src="plugins/cycle-plugin.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+	
+	$('#fade').cycle();
+	});
+
+</script>
+<script type="text/javascript">
+//<!--
+var timeout         = 500;
+var closetimer		= 0;
+var ddmenuitem      = 0;
+
+// open hidden layer
+function mopen(id)
+{	
+	// cancel close timer
+	mcancelclosetime();
+
+	// close old layer
+	if(ddmenuitem) ddmenuitem.style.visibility = 'hidden';
+
+	// get new layer and show it
+	ddmenuitem = document.getElementById(id);
+	ddmenuitem.style.visibility = 'visible';
+
+}
+// close showed layer
+function mclose()
+{
+	if(ddmenuitem) ddmenuitem.style.visibility = 'hidden';
+}
+
+// go close timer
+function mclosetime()
+{
+	closetimer = window.setTimeout(mclose, timeout);
+}
+
+// cancel close timer
+function mcancelclosetime()
+{
+	if(closetimer)
+	{
+		window.clearTimeout(closetimer);
+		closetimer = null;
+	}
+}
+
+// close layer when click-out
+document.onclick = mclose; 
+// -->
+</script>
 </head>
 
 <body>
 
   <!-- Navigation -->
-  <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-transparent fixed-top">
+  <!-- <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-transparent fixed-top">
     <div class="container">
       <a class="navbar-brand" href="index.html"><img width="200" height="45" src="LetterHead latest top.png" /></a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,7 +106,37 @@
         </ul>
       </div>
     </div>
-  </nav>
+  </nav> -->
+  <table align="center" width="1000">
+      <tr> <td class="menubg">
+        <table width="1000" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td class="logo" width="279"><a href="index.html"><img src="images/b3logo.png"  alt="" width="279" height="78" border="0" title=""/></a></td>
+            <td>        
+              <ul id="sddm">
+                <li><a href="index.html" onmouseover="mopen('m1')" onmouseout="mclosetime()">Home</a></li>
+                <li><a href="about.html" onmouseover="mopen('m2')" onmouseout="mclosetime()">About Us</a></li>
+                <li><a href="products.html" onmouseover="mopen('m3')" onmouseout="mclosetime()">Products</a>
+                  <div id="m3" onmouseover="mcancelclosetime()" onmouseout="mclosetime()"> <a href="mats.html">Mats</a> </div>
+                </li>
+                <li><a href="contact.html" onmouseover="mopen('m4')" onmouseout="mclosetime()">Contact Us</a> </li>
+              </ul></td>
+          </tr>
+        </table></td>
+      </tr>
+      <tr>
+      <td height="230">&nbsp;</td>
+      </tr>
+      <tr>
+      <td>
+        <div id="fade" style=" margin:0 auto;"> 
+          <img src="images/mat-web-new1.png" width="921" height="287">  
+          <img src="images/mat-web-new2.png" width="921" height="287"> 
+          <img src="images/mat-web-new3.png" width="921" height="287">
+        </div>
+      </td>
+      </tr>
+      </table>
 
   <!-- Page Content -->
   <div class="container">
@@ -180,7 +267,7 @@
   </footer>
 
   <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
+  <!-- <script src="vendor/jquery/jquery.min.js"></script> -->
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
